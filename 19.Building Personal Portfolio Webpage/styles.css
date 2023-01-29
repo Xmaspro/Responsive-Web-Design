@@ -1,0 +1,280 @@
+/*Custom property and variables*/
+:root {
+    --bg-color: #242426;
+    --main-white: white;
+    --main-red: #be3144;
+    --main-blue: #45577d;
+    --main-gray: #303841;
+    --a-color: rgba(90, 120, 120, 1);
+    --a-visited-color: rgba(120, 120, 90, 1);
+    --a-hover-color: rgb(211, 211, 211);
+}
+
+/*removing any default margins or padding that may be present.
+Ensure that webpages have a consistent look and feel across different browsers and platforms.*/
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/*targets all elements on a web page, including pseudo-elements*/
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+html {
+    box-sizing: border-box; /*ensures that the width and height of an element include any padding and borders*/
+    font-size: 62.5%; /*1rem = 16px * 62.5% = 10px*/
+    scroll-behavior: smooth;
+}
+
+/*if the width of the screen is less than or equal to 1200 pixels, then the font size of the <html> element should be set to 60%.*/
+@media screen and (max-width: 1200px) {
+    html {
+        font-size: 60%;
+    }
+}
+
+/*if the width of the screen is less than or equal to 980 pixels, then the font size of the <html> element should be set to 58%.*/
+@media screen and (max-width: 980px) {
+    html {
+        font-size: 58%;
+    }
+}
+
+/*if the width of the screen is less than or equal to 500 pixels, then the font size of the <html> element should be set to 55%.*/
+@media screen and (max-width: 500px) {
+    html {
+        font-size: 55%;
+    }
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--main-white);
+    font-size: 18px;
+    font-weight: 400;
+    font-family: "Poppins", sans-serif;
+    line-height: 1.4; /*1.4 times the font size*/
+}
+
+h1,
+h2 {
+    font-family: "Raleway", sans-serif;
+    font-weight: 700;
+    text-align: center;
+}
+h1 {
+    font-size: 60px;
+}
+h2 {
+    font-size: 42px;
+}
+ul {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    width: 35vw;
+    margin-left: 0px;
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: var(--main-white);
+}
+img {
+    display: block;
+    width: 100%; /*the image will be resized to fit the full width of its parent container, regardless of its original dimensions.*/
+}
+
+/*Navigation section*/
+.navbar {
+    width: 100%;
+    height: 64px;
+    background-color: var(--main-red);
+    position: fixed;
+    display: flex;
+    flex-direction: row;
+    justify-content: end;
+}
+
+.nav-list {
+    display: flex;
+    margin-right: 20px;
+}
+@media (max-width: 300px) {
+    .navbar {
+        justify-content: center;
+    }
+    .nav-list {
+        margin: 0 10px;
+    }
+}
+.nav-list a {
+    display: block;
+    font-size: 24px;
+    padding: 14px;
+}
+.nav-list a:hover {
+    background-color: var(--main-blue);
+}
+/*Welcome section*/
+#welcome-section {
+    height: 100vh;
+    width: 100%; /*automatically adjust to the size of the parent elements*/
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.welcome-subtitle {
+    font-size: 3rem;
+    color: var(--main-red);
+    font-style: italic;
+}
+/*Projects section*/
+.projects-selection {
+    text-align: center;
+    padding: 10rem 2rem;
+    background-color: var(--main-blue);
+}
+.projects-selection-header {
+    max-width: 640px;
+    margin: 0 auto 60px auto;
+    border-bottom: solid var(--main-white);
+}
+@media (max-width: 600px) {
+    .projects-selection-header {
+        font-size: 36px;
+    }
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(
+        auto-fit,
+        minmax(320px, 1fr)
+    ); /*sets the minimum and maximum width of the columns.*/
+    grid-gap: 40px;
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    margin-bottom: 60px;
+}
+@media (max-width: 300px) {
+    .projects-selection {
+        padding: 60px 10px;
+    }
+    .projects-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.project {
+    background-color: var(--main-blue);
+    border-radius: 2px;
+}
+.code {
+    color: var(--main-white);
+}
+
+.project:hover .code {
+    color: #ff7f50;
+}
+
+.project-image {
+    height: calc(100%-6.8rem);
+    width: 100%;
+    object-fit: cover; /*the image will be resized to completely fill the container while maintaining its aspect ratio*/
+}
+
+.project-title {
+    font-size: 2rem;
+    padding: 2rem 0.5rem;
+    background-color: var(--bg-color);
+}
+
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: var(--bg-color);
+}
+.btn-show-all:hover {
+    background-color: var(--main-red);
+}
+.btn-show-all:hover > i {
+    transform: translateX(2px); /*move an element along the x-axis.*/
+}
+.btn-show-all > i {
+    margin-left: 10px;
+    transform: translateX(0);
+    transition: transform 0.5s ease-out;
+}
+
+/*contact links*/
+.contact-section {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    height: 80vh;
+}
+.contact-section-header > h2 {
+    font-size: 60px;
+}
+@media (max-width: 480px) {
+    .contact-section-header > h2 {
+        font-size: 40px;
+    }
+}
+.contact-section-header > p {
+    font-style: italic;
+}
+.profile-link {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    max-width: 900px;
+    flex-wrap: wrap;
+}
+.contact-details {
+    transition: transform 0.3s ease-out;
+}
+.contact-details:hover {
+    transform: translateY(8px);
+}
+
+/*footer section*/
+
+footer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    border-top: solid var(--main-red) 4px;
+    font-weight: 300;
+}
+footer > p {
+    margin: 48px;
+}
+footer i {
+    vertical-align: middle;
+}
+
+footer a {
+    text-decoration: none;
+    color: white;
+    font-family: Poppins;
+}
+@media (max-width: 300) {
+    footer {
+        flex-direction: column;
+        text-align: center;
+    }
+}
